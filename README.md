@@ -6,14 +6,12 @@
 |---------------------|---------------------|-------------------------|
 | nickname            | string              | null: false             |
 | email               | string              | null: false             |
-| password            | string              | null: false             |
+| encrypted_password  | string              | null: false             |
 | last_name           | string              | null: false             |
 | first_name          | string              | null: false             |
 | katakana_last_name  | string              | null: false             |
 | katakana_first_name | string              | null: false             |
-| birthday_year       | string              | null: false             |
-| birthday_month      | string              | null: false             |
-| birthday_day        | string              | null: false             |
+| date                | string              | null: false             |
 
 ### Association
 
