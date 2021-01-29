@@ -17,28 +17,29 @@
 
 * has_many :exhibition
 * has_many :comments
-* has_many :Purchase
+* has_many :purchase
 
 
-## exhibition table
+## items table
 
 | Column              | Type                | Options                |
 |---------------------|---------------------|------------------------|
-| Product name        | text                | null: false            |
-| Product Details     | text                | null: false            |
-| Category            | string              | null: false            |
-| Product status      | string              | null: false            |
-| Shipping charges    | string              | null: false            |
-| Shipping area       | string              | null: false            |
-| Days to ship        | string              | null: false            |
-| Selling price       | string              | null: false            |
-| user                | references          | foreign_key: true      |
+| product_name        | string              | null: false            |
+| product_Details_id  | integer             | null: false            |
+| category_id         | integer             | null: false            |
+| product_status_id   | integer             | null: false            |
+| shipping_charges_id | integer             | null: false            |
+| shipping_area_id    | integer             | null: false            |
+| days_to_ship_id     | integer             | null: false            |
+| selling_price_id    | integer             | null: false            |
+| saler_id            | integer             | null: false            |
+
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- belongs_to :Purchase
+- belongs_to :purchase
 
 ## comments table
 
@@ -58,6 +59,21 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
+| prototype          | references          | foreign_key: true       |
+| buyer_id           | integer             | null: false             |
+| shipping_address   | references          | foreign_key: true       |
+
+
+### Association
+
+- has_many :exhibition
+- belongs_to :user
+- belongs_to :shipping_address
+
+## shipping_address table
+
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
 | postal_code        | string              | null: false             |
 | prefectures        | string              | null: false             |
 | municipality       | string              | null: false             |
@@ -65,24 +81,8 @@
 | building name      | string              | null: false             |
 | phone number       | string              | null: false             |
 | prototype          | references          | foreign_key: true       |
-| user               | references          | foreign_key: true       |
+| buyer_id           | integer             | null: false            |
 
 ### Association
 
-- has_many :exhibition
-- belongs_to :user
-
-## credit_card table
-
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| card_information   | string              | null: false             |
-| expiration_date    | string              | null: false             |
-| security_code      | string              | null: false             |
-| Purchase           | references          | foreign_key: true       |
-| user               | references          | foreign_key: true       |
-
-### Association
-
-- belongs_to :user
-- belongs_to :purchase
+- has_one :purchase
