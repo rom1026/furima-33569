@@ -25,13 +25,13 @@
 | Column              | Type                | Options                |
 |---------------------|---------------------|------------------------|
 | product_name        | string              | null: false            |
-| product_Details_id  | text                | null: false            |
+| product_details     | text                | null: false            |
 | category_id         | integer             | null: false            |
 | product_status_id   | integer             | null: false            |
 | shipping_charges_id | integer             | null: false            |
-| prefecture_id   　　 | integer             | null: false            |
+| prefecture_id       | integer             | null: false            |
 | days_to_ship_id     | integer             | null: false            |
-| selling_price_id    | integer             | null: false            |
+| selling_price       | integer             | null: false            |
 | user                | references          | foreign_key: true      |
 
 
@@ -73,11 +73,12 @@
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | postal_code        | string              | null: false             |
-| prefecture　　     | string              | null: false             |
+| prefecture         | string              | null: false             |
 | municipality       | string              | null: false             |
 | address            | string              | null: false             |
 | building name      | string              |                         |
 | phone number       | string              | null: false             |
+| purchase           | references          | foreign_key: true       |
 
 ### Association
 
