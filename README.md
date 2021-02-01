@@ -2,20 +2,20 @@
 
 ## users table
 
-| Column              | Type                | Options                 |
-|---------------------|---------------------|-------------------------|
-| nickname            | string              | null: false             |
-| email               | string              | null: false             |
-| encrypted_password  | string              | null: false             |
-| last_name           | string              | null: false             |
-| first_name          | string              | null: false             |
-| katakana_last_name  | string              | null: false             |
-| katakana_first_name | string              | null: false             |
-| date                | string              | null: false             |
+| Column              | Type                | Options                  |
+|---------------------|---------------------|--------------------------|
+| nickname            | string              | null: false              |
+| email               | string              | null: false,unique: true |
+| encrypted_password  | string              | null: false              |
+| last_name           | string              | null: false              |
+| first_name          | string              | null: false              |
+| katakana_last_name  | string              | null: false              |
+| katakana_first_name | string              | null: false              |
+| date                | string              | null: false              |
 
 ### Association
 
-* has_many :exhibition
+* has_many :items
 * has_many :comments
 * has_many :purchase
 
@@ -25,14 +25,14 @@
 | Column              | Type                | Options                |
 |---------------------|---------------------|------------------------|
 | product_name        | string              | null: false            |
-| product_Details_id  | integer             | null: false            |
+| product_Details_id  | text                | null: false            |
 | category_id         | integer             | null: false            |
 | product_status_id   | integer             | null: false            |
 | shipping_charges_id | integer             | null: false            |
-| shipping_area_id    | integer             | null: false            |
+| prefecture_id   　　 | integer             | null: false            |
 | days_to_ship_id     | integer             | null: false            |
 | selling_price_id    | integer             | null: false            |
-| saler_id            | integer             | null: false            |
+| user                | references          | foreign_key: true      |
 
 
 ### Association
@@ -59,30 +59,26 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| prototype          | references          | foreign_key: true       |
-| buyer_id           | integer             | null: false             |
-| shipping_address   | references          | foreign_key: true       |
-
+| user               | references          | foreign_key: true       |
+| items              | references          | foreign_key: true       |
 
 ### Association
 
-- has_many :exhibition
 - belongs_to :user
-- belongs_to :shipping_address
+- belongs_to :items
+- has_one :shipping_address
 
 ## shipping_address table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | postal_code        | string              | null: false             |
-| prefectures        | string              | null: false             |
+| prefecture　　     | string              | null: false             |
 | municipality       | string              | null: false             |
 | address            | string              | null: false             |
-| building name      | string              | null: false             |
+| building name      | string              |                         |
 | phone number       | string              | null: false             |
-| prototype          | references          | foreign_key: true       |
-| buyer_id           | integer             | null: false            |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
