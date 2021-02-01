@@ -39,7 +39,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## purchase table
+## purchases table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
@@ -52,7 +52,7 @@
 - belongs_to :item
 - has_one :shipping_address
 
-## shipping_address table
+## shipping_addresses table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
