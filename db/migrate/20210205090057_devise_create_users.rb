@@ -4,8 +4,17 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+
+      t.string :nickname,            null: false, default: ""
+      t.string :email,               null: false,unique: true, default: "", format: { with: VALID_EMAIL_REGEX }
+      t.string :encrypted_password,  null: false, default: ""
+      t.string :last_name,            null: false, default: ""
+      t.string :first_name,          null: false, default: ""
+      t.string :katakana_last_name,  null: false, default: ""
+      t.string :katakana_first_name, null: false, default: ""
+      t.date :birth_date,                null: false
+
+      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
       ## Recoverable
       t.string   :reset_password_token
