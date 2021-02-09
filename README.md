@@ -11,7 +11,7 @@
 | first_name          | string              | null: false              |
 | katakana_last_name  | string              | null: false              |
 | katakana_first_name | string              | null: false              |
-| date                | date                | null: false              |
+| birth_date          | date                | null: false              |
 
 ### Association
 
