@@ -20,13 +20,12 @@ class Item < ApplicationRecord
     validates :shipping_charge_id
     validates :prefecture_id
     validates :days_to_ship_id
-    with_options numericality: { with: /\A[0-9]+\z/ , message: '半角数字のみ入力可能です' } do
-      validates :selling_price, inclusion: { in: 300..9999999}
+    with_options numericality: { with: /\A[0-9]+\z/, message: '半角数字のみ入力可能です' } do
+      validates :selling_price, inclusion: { in: 300..9_999_999 }
     end
     validates :image
   end
-  
-  
+
   with_options numericality: { other_than: 0 } do
     validates :category_id
     validates :product_status_id
