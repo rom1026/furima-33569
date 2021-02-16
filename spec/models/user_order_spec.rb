@@ -10,6 +10,12 @@ RSpec.describe UserOrder, type: :model do
       it '全ての項目がが存在すれば保購入できること' do
         expect(@user_order).to be_valid
       end
+
+      it '建物名が無くても購入できること' do
+        @user_order.building_name = ''
+        expect(@user_order).to be_valid
+      end
+
     end
 
     context '商品購入ができない時' do
@@ -68,6 +74,12 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
+      it 'phone_numberが英数混合では登録できないこと' do
+        @user_order.phone_number = '08055370abc'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include('Phone number Half-width number')
+      end
+
 
       it 'userが空では登録できないこと' do
         @user_order.user_id = nil
