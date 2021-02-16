@@ -7,8 +7,8 @@ class Item < ApplicationRecord
   belongs_to :days_to_ship
 
   belongs_to :user
-  has_one :purchase
   has_one_attached :image
+  has_one :order
 
   with_options presence: true do
     validates :product_name
